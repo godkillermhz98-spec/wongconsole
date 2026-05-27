@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Become a WONG Console tester — get early access to the demo and help shape the future of the next-gen Steam integration engine.">
+    <title>Become a Tester — WONG Console</title>
+
+    <!-- Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        /* Tester Page Specifics */
+        .tester-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 24px 80px 24px;
+            position: relative;
+        }
+
+        .tester-back-link {
+            position: fixed;
+            top: 28px;
+            left: 28px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-header);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: var(--border-glass);
+            border-radius: 8px;
+            background: rgba(7, 7, 9, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition-snappy);
+            z-index: 100;
+        }
+
+        .tester-back-link:hover {
+            color: var(--text-primary);
+            border-color: rgba(220, 20, 60, 0.35);
+            background: rgba(220, 20, 60, 0.06);
+        }
+
+        .tester-back-arrow {
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .tester-back-arrow svg {
+            stroke: currentColor;
+        }
+
+        .tester-back-link:hover .tester-back-arrow {
+            transform: translateX(-4px);
+        }
+
+        .tester-hero-card {
+            max-width: 720px;
+            width: 100%;
+            background: var(--bg-card);
+            border: var(--border-glass-glow);
+            border-radius: 24px;
+            padding: 56px 52px;
+            box-shadow: var(--shadow-glass), 0 0 40px rgba(220, 20, 60, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+            text-align: center;
+            animation: cardFadeIn 0.6s ease-out;
+        }
+
+        @keyframes cardFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tester-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-header);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            background: rgba(220, 20, 60, 0.07);
+            padding: 8px 20px;
+            border-radius: 100px;
+        }
+
+        .tester-badge-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tester-badge-icon svg {
+            stroke: currentColor;
+        }
+
+        .tester-hero-title {
+            font-family: var(--font-header);
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .tester-hero-message {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 580px;
+        }
+
+        .tester-divider {
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        }
+
+        .tester-email-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tester-email-label {
+            font-family: var(--font-header);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-dark);
+        }
+
+        .tester-email-address {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-header);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-primary); /* Vibrant Red */
+            text-decoration: none;
+            padding: 18px 36px;
+            border: 1px solid rgba(218, 0, 0, 0.35);
+            background: rgba(131, 15, 16, 0.12); /* Burgundy background tint */
+            border-radius: 14px;
+            transition: var(--transition-snappy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tester-email-address::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(218, 0, 0, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .tester-email-address:hover::before {
+            left: 100%;
+        }
+
+        .tester-email-address:hover {
+            background: rgba(131, 15, 16, 0.25);
+            border-color: rgba(218, 0, 0, 0.6);
+            box-shadow: 0 0 28px rgba(218, 0, 0, 0.22);
+            transform: scale(1.04);
+        }
+
+        .tester-email-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tester-email-icon svg {
+            stroke: currentColor;
+        }
+
+        .tester-footer-note {
+            font-size: 12.5px;
+            color: var(--text-dark);
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        /* Floating ambient orbs for visual interest */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(80px);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--color-primary);
+            top: -100px;
+            right: -100px;
+            animation: orbFloat 12s ease-in-out infinite alternate;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--color-secondary);
+            bottom: -80px;
+            left: -80px;
+            animation: orbFloat 15s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes orbFloat {
+            from { transform: translate(0, 0); }
+            to { transform: translate(30px, -30px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tester-hero-card {
+                padding: 36px 24px;
+            }
+
+            .tester-hero-title {
+                font-size: 28px;
+            }
+
+            .tester-email-address {
+                font-size: 15px;
+                padding: 14px 24px;
+            }
+
+            .tester-back-link {
+                top: 16px;
+                left: 16px;
+                font-size: 12px;
+                padding: 8px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+    <!-- Ambient Cursor Glow & Dual-Ring Pointer -->
+    <div class="cursor-halo" id="cursorHalo"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Ambient Glow -->
+    <div class="ambient-glow"></div>
+
+    <!-- Floating Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- Back to Home Link -->
+    <a href="index.html" class="tester-back-link" id="testerBackLink">
+        <span class="tester-back-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span>
+        Back to Home
+    </a>
+
+    <!-- Main Tester Content -->
+    <main class="tester-page" id="testerPage">
+        <div class="tester-hero-card" id="testerHeroCard">
+
+            <div class="tester-badge">
+                <span class="tester-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v2H9z"/><path d="M10 5v5.2L4.6 19.4A2 2 0 0 0 6.2 22h11.6a2 2 0 0 0 1.6-2.6L14 10.2V5"/><path d="M8.5 14h7"/></svg></span>
+                <span>TESTER APPLICATION</span>
+            </div>
+
+            <h1 class="tester-hero-title">
+                Become a <span class="gradient-text">WONG Console</span> Tester
+            </h1>
+
+            <p class="tester-hero-message">
+                This app is currently in development and even if released, it is highly anticipated to be launched as a SaaS (Software as a Service). Regardless, if you're interested to test this app's demo, you're most welcome to send me an email at:
+            </p>
+
+            <div class="tester-divider"></div>
+
+            <div class="tester-email-block">
+                <span class="tester-email-label">Contact Email</span>
+                <a href="mailto:technicallyprsent@gmail.com" class="tester-email-address" id="testerEmailLink">
+                    <span class="tester-email-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+                    technicallyprsent@gmail.com
+                </a>
+            </div>
+
+            <p class="tester-footer-note">
+                For latest updates, keep tracking the website! Thank you.
+            </p>
+        </div>
+    </main>
+
+    <!-- Custom Script Integration -->
+    <script src="index.js"></script>
+</body>
+</html>

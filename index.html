@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WONG Console is a high-performance, O(1) memory-cached Steam companion and game bypass system built using GPU-accelerated XAML and local SQLite ledgers.">
+    <title>WONG Console — High-Performance Steam Integration Engine</title>
+    
+    <!-- Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Cybernetic CSS Styling -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Cyber Preloader Boot Sequence -->
+    <div class="cyber-preloader" id="cyberPreloader">
+        <div class="preloader-bg-glow"></div>
+        <div class="preloader-grid-bg"></div>
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <span class="preloader-logo-accent">WONG</span>Console
+            </div>
+            <div class="preloader-panel">
+                <div class="preloader-logs" id="preloaderLogs">
+                    <!-- Dynamic boot diagnostic logs fed via JS -->
+                </div>
+                <div class="preloader-progress-container">
+                    <div class="preloader-progress-meta">
+                        <span class="preloader-status" id="preloaderStatus">SYNCHRONIZING DESKTOP SECTORS...</span>
+                        <span class="preloader-percentage" id="preloaderPercentage">00%</span>
+                    </div>
+                    <div class="preloader-bar-bg">
+                        <div class="preloader-bar-fill" id="preloaderBarFill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+    <!-- Ambient Cursor Glow & Dual-Ring Pointer -->
+    <div class="cursor-halo" id="cursorHalo"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Ambient Cybernetic Glow Backdrop -->
+    <div class="ambient-glow" id="ambientGlow"></div>
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Sticky Glassmorphic Header -->
+    <header class="main-header" id="mainHeader">
+        <div class="header-container">
+            <a href="#" class="logo" id="logoLink">
+                <span class="logo-accent">WONG</span>Console
+            </a>
+            
+            <nav class="navbar" id="mainNavbar">
+                <a href="#about" class="nav-link" id="navLinkAbout">About</a>
+                <a href="#features" class="nav-link" id="navLinkFeatures">Features</a>
+                <a href="#pipeline" class="nav-link" id="navLinkPipeline">Pipeline</a>
+                <a href="#faq" class="nav-link" id="navLinkFaq">FAQ</a>
+                <a href="#story" class="nav-link" id="navLinkStory">The Story</a>
+                <a href="#getapp" class="nav-link active" id="navLinkGetApp">Get App</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#terminal" class="btn-action-outline" id="btnHeaderTerminal">Run Terminal</a>
+                <a href="#getapp" class="btn-action-primary" id="btnHeaderGet">Get App</a>
+            </div>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <nav class="mobile-navbar">
+            <a href="#about" class="mobile-nav-link" id="mobileLinkAbout">About</a>
+            <a href="#features" class="mobile-nav-link" id="mobileLinkFeatures">Features</a>
+            <a href="#pipeline" class="mobile-nav-link" id="mobileLinkPipeline">Pipeline</a>
+            <a href="#faq" class="mobile-nav-link" id="mobileLinkFaq">FAQ</a>
+            <a href="#story" class="mobile-nav-link" id="mobileLinkStory">The Story</a>
+            <a href="#getapp" class="mobile-nav-link" id="mobileLinkGetApp">Get App</a>
+            <a href="#terminal" class="mobile-nav-link" id="mobileLinkTerminal">Simulator Terminal</a>
+        </nav>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="main-content" id="mainContent">
+
+        <!-- Hero Section with Glowing Typography -->
+        <section class="hero-section" id="about">
+            <div class="section-container hero-container">
+                <div class="hero-text-block">
+                    <div class="system-tag reveal-item reveal-delay-1" id="heroSystemTag">SYSTEM INJECTION STATUS: OPERATIONAL</div>
+                    <h1 class="hero-title reveal-item reveal-delay-2" id="heroTitle">
+                        The Next-Gen <span class="gradient-text">Steam Integration</span> &amp; Game Deployment Layer
+                    </h1>
+                    <p class="hero-description reveal-item reveal-delay-3" id="heroDescription">
+                        Ditch corporate monopolistic telemetries, background trackers, and bloated compression setups. WONG Console emulates Valve Steam manifests directly on disk sectors, yielding sub-millisecond game bypass executions and complete catalog autonomy.
+                    </p>
+                    
+                    <!-- Specialty Pillars Bento -->
+                    <div class="specialty-bento reveal-item reveal-delay-4" id="specialtyBento">
+                        <!-- Pillar 1: Add any game -->
+                        <div class="specialty-card" id="pillarAdd">
+                            <div class="specialty-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                            </div>
+                            <div class="specialty-info">
+                                <span class="specialty-val"><span id="metricGameCounter">0</span>+</span>
+                                <span class="specialty-label">Add Any Game</span>
+                                <span class="specialty-desc">Flawless library injection with verified manifest tickets.</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Pillar 2: Play any game -->
+                        <div class="specialty-card" id="pillarPlay">
+                            <div class="specialty-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
+                            <div class="specialty-info">
+                                <span class="specialty-val">Instant Play</span>
+                                <span class="specialty-label">Play Any Game</span>
+                                <span class="specialty-desc">Zero decompression wait times, zero CRC errors, immediate execution.</span>
+                            </div>
+                        </div>
+
+                        <!-- Pillar 3: Bypass any game -->
+                        <div class="specialty-card" id="pillarBypass">
+                            <div class="specialty-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            </div>
+                            <div class="specialty-info">
+                                <span class="specialty-val gradient-text">DRM Unlocked</span>
+                                <span class="specialty-label">Bypass Any Game</span>
+                                <span class="specialty-desc">Denuvo, EA App, Ubisoft Connect, Rockstar Social Club, and more.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-cta-buttons reveal-item reveal-delay-5">
+                        <a href="#getapp" class="btn-primary" id="btnHeroGetApp">Get App</a>
+                        <a href="#terminal" class="btn-secondary" id="btnHeroTerminal">Launch Terminal Emulator</a>
+                    </div>
+                </div>
+
+                <!-- High-fidelity simulated App UI Shell (Interactive Card) -->
+                <div class="hero-visual-block reveal-item reveal-scale reveal-delay-3" id="heroVisualBlock">
+                    <div class="app-ui-mockup" id="appUiMockup">
+                        <!-- Mockup Title Bar -->
+                        <div class="mockup-titlebar">
+                            <div class="titlebar-logo">Wong Console v4.0.2</div>
+                            <div class="titlebar-controls">
+                                <span class="dot dot-min"></span>
+                                <span class="dot dot-max"></span>
+                                <span class="dot dot-close"></span>
+                            </div>
+                        </div>
+                        <!-- Mockup Main Structure -->
+                        <div class="mockup-body">
+                            <!-- Sidebar -->
+                            <aside class="mockup-sidebar">
+                                <div class="sidebar-item active"><svg class="sidebar-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Library</div>
+                                <div class="sidebar-item"><svg class="sidebar-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6l3-3"/><path d="M12 8l-3-3"/><path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"/><path d="M12 12l4 2"/></svg> Bypass Console</div>
+                                <div class="sidebar-item"><svg class="sidebar-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg> Achievements</div>
+                                <div class="sidebar-item"><svg class="sidebar-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Online Fix</div>
+                                <div class="sidebar-item"><svg class="sidebar-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</div>
+                                <div class="sidebar-status-card">
+                                    <div class="status-indicator-dot"></div>
+                                    <div class="status-card-text">
+                                        <div class="status-card-title">Wong Repo</div>
+                                        <div class="status-card-sub">[ SECURE ]</div>
+                                    </div>
+                                </div>
+                            </aside>
+                            <!-- Main Panel -->
+                            <div class="mockup-main">
+                                <div class="mockup-header">
+                                    <div class="mockup-search-bar"><svg class="mockup-inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search local database ledger...</div>
+                                    <div class="mockup-steam-btn"><svg class="mockup-inline-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Restart Steam</div>
+                                </div>
+                                <div class="mockup-grid">
+                                    <div class="mockup-card">
+                                        <div class="mockup-card-image card-img-cyberpunk"></div>
+                                        <div class="mockup-card-title">Cyberpunk 2077</div>
+                                        <div class="mockup-card-pill pill-green">Meta: 86</div>
+                                    </div>
+                                    <div class="mockup-card">
+                                        <div class="mockup-card-image card-img-elden"></div>
+                                        <div class="mockup-card-title">Elden Ring</div>
+                                        <div class="mockup-card-pill pill-green">Meta: 96</div>
+                                    </div>
+                                    <div class="mockup-card">
+                                        <div class="mockup-card-image card-img-gta"></div>
+                                        <div class="mockup-card-title">GTA V</div>
+                                        <div class="mockup-card-pill pill-gold">Meta: 97</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Terminal Simulator -->
+        <section class="terminal-section" id="terminal">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Emulated <span class="gradient-text">Command Console</span></h2>
+                    <p class="section-subtitle">Interface directly with WONG's virtual core. Type commands to emulated manifest injections, query schemas, and examine database structures.</p>
+                </div>
+
+                <div class="terminal-wrapper" id="terminalWrapper">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="t-dot t-red"></span>
+                            <span class="t-dot t-yellow"></span>
+                            <span class="t-dot t-green"></span>
+                        </div>
+                        <div class="terminal-title">wong@cyber-kernel-node: ~</div>
+                        <div class="terminal-badge">SYS-EMULATOR v1.0.8</div>
+                    </div>
+                    <div class="terminal-body" id="terminalBody">
+                        <div class="terminal-line">WONG CONSOLE [Virtual Command Line System]</div>
+                        <div class="terminal-line">B.Tech AI Matrix Node initialized. SQLite relational buffers synchronized.</div>
+                        <div class="terminal-line">Type <span class="text-crimson font-bold">help</span> to view available cybernetic system instructions.</div>
+                        <br>
+                        <div class="terminal-output-container" id="terminalOutput"></div>
+                        <div class="terminal-input-line">
+                            <span class="terminal-prompt">wong@cyber-kernel-node:~$</span>
+                            <input type="text" class="terminal-input" id="terminalInput" autofocus autocomplete="off" spellcheck="false" placeholder="Enter cybernetic command...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bento Grid Features Section -->
+        <section class="features-section" id="features">
+            <div class="section-container">
+                <div class="section-header reveal-item reveal-scale">
+                    <h2 class="section-title">Engine <span class="gradient-text">Specifications</span></h2>
+                    <p class="section-subtitle">Deep dive into the architectural modules that make WONG Console the elite desktop game bypasser.</p>
+                </div>
+
+                <div class="bento-grid" id="bentoGrid">
+                    <!-- Card 1: The SteamTool Engine -->
+                    <div class="bento-card bento-w-2 reveal-item reveal-scale reveal-delay-1" id="bentoCardSteamTool">
+                        <div class="bento-icon">
+                            <svg class="icon-svg bento-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+                        </div>
+                        <h3 class="bento-title">The SteamTool Engine (Zero-Friction Library Integration)</h3>
+                        <p class="bento-desc">
+                            Automates the addition of games directly into the native Steam client library. Utilizing a cloud-hosted private database of pre-verified ownership manifests, it eliminates the need for manual file generation.
+                        </p>
+                        
+                        <div class="bento-sublist">
+                            <div class="bento-subitem">
+                                <div class="subitem-title"><span class="bullet-dot"></span> Integrated Portable SteamDB Explorer (Fastest)</div>
+                                <p class="subitem-desc">An embedded browser interface inside the app. Search for any game, click the integrated "Add Game" button, and restart Steam to instantly populate your library.</p>
+                            </div>
+                            <div class="bento-subitem">
+                                <div class="subitem-title"><span class="bullet-dot"></span> Quick AppID Injection</div>
+                                <p class="subitem-desc">A rapid-action input field located in the bottom-left corner of the UI. Key in a standard SteamDB AppID, click add, and restart Steam to update ownership sectors.</p>
+                            </div>
+                            <div class="bento-subitem">
+                                <div class="subitem-title"><span class="bullet-dot"></span> Traditional Manifest Drop-Zone</div>
+                                <p class="subitem-desc">Legacy-compatibility backup system. Simply drag and drop a zipped package containing traditional .manifest or .lua files directly onto the interface.</p>
+                            </div>
+                            <div class="bento-subitem">
+                                <div class="subitem-title"><span class="bullet-dot"></span> The Auto-Detect Mechanism</div>
+                                <p class="subitem-desc">Removes pathing friction via an automated split-second execution of steam.exe to intercept process handles and extract target directory mappings from active system registry and memory.</p>
+                            </div>
+                        </div>
+
+                        <div class="bento-code-preview" style="margin-top: 20px;">
+                            <pre><code>// Wong Repo Manifest Sync Core
+var manifest = WongRepo.QueryManifest(appId);
+SteamDirectory.InjectSector(manifest.Payload);</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Bypass & Injection Core -->
+                    <div class="bento-card reveal-item reveal-scale reveal-delay-2" id="bentoCardBypassCore">
+                        <div class="bento-icon">
+                            <svg class="icon-svg bento-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/><polyline points="21 7 21 3 17 3"/></svg>
+                        </div>
+                        <h3 class="bento-title">Bypass &amp; Injection Core (DRM Liberation)</h3>
+                        <p class="bento-desc">
+                            Automated file manager optimized to bypass restrictive, performance-heavy digital rights management (DRM) and external corporate launchers like Denuvo, EA Play, Ubisoft Connect, and Rockstar Social Club.
+                        </p>
+                        
+                        <div class="bento-sublist">
+                            <div class="bento-subitem">
+                                <div class="subitem-title"><span class="bullet-dot"></span> Pre-Configured Crack Repository</div>
+                                <p class="subitem-desc">Seamlessly hosts and organizes community-trusted crack files and emulators, including voices38 and other prominent binaries.</p>
+                            </div>
+                            <div class="bento-subitem">
+                                <div class="subitem-title"><span class="bullet-dot"></span> Automated Binary Hot-Swapping</div>
+                                <p class="subitem-desc">Operates with administrative file-system privileges, sweeping directories to swap official binaries with cracked variations without triggering game integrity loops.</p>
+                            </div>
+                            <div class="bento-subitem">
+                                <div class="subitem-title"><span class="bullet-dot"></span> The Anti-Repack Advantage</div>
+                                <p class="subitem-desc">Bypasses public torrent bottlenecks entirely. Pull clean digital assets at maximum network speed and apply the direct binary bypass, skipping hours of CPU decompression.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Steam Utility Framework -->
+                    <div class="bento-card reveal-item reveal-scale reveal-delay-1" id="bentoCardUtilityFramework">
+                        <div class="bento-icon">
+                            <svg class="icon-svg bento-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                        </div>
+                        <h3 class="bento-title">Steam Utility Framework (Integrated SAM)</h3>
+                        <p class="bento-desc">
+                            Features a fully integrated achievement hook linked to the SAM.API wrapper and automatic unpacking routines, removing the need for aging standalone applications.
+                        </p>
+                        
+                        <div class="bento-sublist">
+                            <div class="bento-subitem">
+                                <div class="subitem-title"><span class="bullet-dot"></span> Dynamic Flag Toggling</div>
+                                <p class="subitem-desc">Intercepts active Steam API callbacks locally, allowing users to safely toggle, unlock, or completely wipe achievement statistics for any game via a clean GUI.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Hardened Security & Deployment -->
+                    <div class="bento-card bento-w-2 reveal-item reveal-scale reveal-delay-3" id="bentoCardSecurity">
+                        <div class="bento-icon">
+                            <svg class="icon-svg bento-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 11 11 13 15 9"/></svg>
+                        </div>
+                        <h3 class="bento-title">Hardened Security &amp; Deployment Architecture</h3>
+                        <p class="bento-desc">
+                            Engineered with a highly defensive "Defense in Depth" security design to protect the host system's data integrity, born from real-world edge cases discovered in beta testing.
+                        </p>
+                        
+                        <div class="bento-sublist">
+                            <div class="bento-subitem">
+                                <div class="subitem-title"><span class="bullet-dot"></span> Automated Path Nesting</div>
+                                <p class="subitem-desc">Regardless of user input (even if targeting bare drive roots like C:\ or D:\), the engine forces isolated subdirectory generation to sandboxed folders.</p>
+                            </div>
+                            <div class="bento-subitem">
+                                <div class="subitem-title"><span class="bullet-dot"></span> UI Safety Speed-Bumps</div>
+                                <p class="subitem-desc">A conditional verification layer. If drive roots are targeted, execution halts immediately and throws explicit data-loss warnings to safeguard the system.</p>
+                            </div>
+                            <div class="bento-subitem">
+                                <div class="subitem-title"><span class="bullet-dot"></span> Hardcoded ExtractPackage Block</div>
+                                <p class="subitem-desc">A low-level fail-safe in the extraction compiler that completely blocks destructive cleanup routines if the target directory resolves to a primary drive root.</p>
+                            </div>
+                            <div class="bento-subitem">
+                                <div class="subitem-title"><span class="bullet-dot"></span> Private Repository Authentication</div>
+                                <p class="subitem-desc">Secured by IP request validation and hardware signature validation, monitoring connections with direct revocation powers if leaks are detected.</p>
+                            </div>
+                        </div>
+
+                        <div class="bento-tag-list">
+                            <span class="bento-tag">Sandboxed Path Nesting</span>
+                            <span class="bento-tag">Drive Root Safety Shield</span>
+                            <span class="bento-tag">Private Git Authentication</span>
+                            <span class="bento-tag">Validation Revocation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Pipeline Flowchart -->
+        <section class="pipeline-section" id="pipeline">
+            <div class="section-container">
+                <div class="section-header reveal-item reveal-scale">
+                    <h2 class="section-title">Deployment <span class="gradient-text">Pipeline Flow</span></h2>
+                    <p class="section-subtitle">Real-time sub-sector process allocation when you execute a game bypass inside WONG Console.</p>
+                </div>
+
+                <div class="pipeline-flow" id="pipelineFlow">
+                    <!-- Flow Step 1 -->
+                    <div class="pipeline-card reveal-item reveal-left reveal-delay-1" id="pipeStep1">
+                        <div class="pipe-num">1</div>
+                        <h3 class="pipe-title">Cryptographic Indexing</h3>
+                        <p class="pipe-desc">
+                            Intercepts target Steam AppID parameter tags. Routes details through local SQLite ledger queries and allocates safe virtual metadata schemas.
+                        </p>
+                    </div>
+
+                    <!-- Flow Line -->
+                    <div class="pipe-line"></div>
+
+                    <!-- Flow Step 2 -->
+                    <div class="pipeline-card reveal-item reveal-scale reveal-delay-2" id="pipeStep2">
+                        <div class="pipe-num">2</div>
+                        <h3 class="pipe-title">Direct-Sector Extraction</h3>
+                        <p class="pipe-desc">
+                            Triggers direct TCP pipelines to secure server arrays. Downloads necessary LUA loaders and bypass DLLs, decompressing raw packets on the fly.
+                        </p>
+                    </div>
+
+                    <!-- Flow Line -->
+                    <div class="pipe-line"></div>
+
+                    <!-- Flow Step 3 -->
+                    <div class="pipeline-card reveal-item reveal-right reveal-delay-3" id="pipeStep3">
+                        <div class="pipe-num">3</div>
+                        <h3 class="pipe-title">Thread Virtualization</h3>
+                        <p class="pipe-desc">
+                            Temporarily halts client execution threads, drops manifest vectors, triggers Windows registry adjustments, and resumes Steam, syncing local licenses.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why WONG Console Exists Section -->
+        <section class="story-section" id="story">
+            <div class="section-container">
+                <div class="section-header reveal-item reveal-scale">
+                    <div class="system-tag">FOUNDATIONAL PHILOSOPHY</div>
+                    <h2 class="section-title">Why WONG Console <span class="gradient-text">Exists</span></h2>
+                    <p class="section-subtitle">Tearing down the artificial borders of local digital access, regional currency imbalances, and unoptimized desktop wrappers.</p>
+                </div>
+
+                <div class="reasons-grid">
+                    <!-- Point 1: Purchasing Power Disconnect -->
+                    <div class="reasons-card reveal-item reveal-scale reveal-delay-1">
+                        <div class="reasons-num">1</div>
+                        <h3 class="reasons-title">The Purchasing Power Disconnect</h3>
+                        <p class="reasons-desc">
+                            When a major gaming company releases a AAA title for $70 USD, they are pricing it based on the economy of wealthy Western or East Asian nations. For a first-year student or a young professional in a developing economy, this does not represent a casual weekend purchase. It can represent a significant percentage of a family's monthly utility budget, rent, or a student's living expenses.
+                        </p>
+                        <p class="reasons-desc">
+                            If a generation of young, brilliant technical minds are locked out of playing the defining narrative and interactive art of their era simply because global corporations refuse to implement fair local regional pricing, they are being culturally sidelined. WONG Console acts as a financial equalizer, removing the price tag so that curiosity and passion dictate who gets to play, not wealth.
+                        </p>
+                    </div>
+
+                    <!-- Point 2: Systemic Financial Exclusion -->
+                    <div class="reasons-card reveal-item reveal-scale reveal-delay-2">
+                        <div class="reasons-num">2</div>
+                        <h3 class="reasons-title">Systemic Financial Exclusion</h3>
+                        <p class="reasons-desc">
+                            The technical barrier isn't about a user's PC specs; it's about geopolitical and banking isolation. There are entire regions across the globe where international digital payment systems like PayPal, Stripe, or global credit cards are tightly restricted, heavily taxed, or completely unavailable due to national banking regulations.
+                        </p>
+                        <p class="reasons-desc">
+                            A gamer could have a top-tier PC and the cash sitting in their local wallet, but because the developer's launcher doesn't support local payment gateways, it is physically impossible to buy the game legally. They are locked out by a digital border wall. When legal channels fail to provide service to a region, alternative software pipelines become a necessity for preservation and access.
+                        </p>
+                    </div>
+
+                    <!-- Point 3: Cultural Verdict: "Games are Art" -->
+                    <div class="reasons-card reveal-item reveal-scale reveal-delay-3">
+                        <div class="reasons-num">3</div>
+                        <h3 class="reasons-title">The Cultural Verdict: "Games are Art"</h3>
+                        <p class="reasons-desc">
+                            If we accept that video games are the defining artistic medium of the 21st century—blending music, cinema, literature, and computer science—then treating them strictly as a luxury commodity for the wealthy elite becomes a disservice to human culture.
+                        </p>
+                        <div class="reasons-quote">
+                            "Culture shouldn't have a border, a flag, or a credit card requirement."
+                        </div>
+                        <p class="reasons-desc">
+                            WONG Console is a bridge over these socio-economic chasms. The code isn't aggressive just for the sake of bypassing security; it is aggressive because it is actively tearing down financial and technical walls to make culture universally accessible.
+                        </p>
+                    </div>
+
+                    <!-- Point 4: Eliminating Torrent and Repack Slow Grind -->
+                    <div class="reasons-card reveal-item reveal-scale reveal-delay-1">
+                        <div class="reasons-num">4</div>
+                        <h3 class="reasons-title">Eliminating the Torrent and Repack "Slow Grind"</h3>
+                        <p class="reasons-desc">
+                            Traditional alternative channels are fundamentally bogged down by the "repack grind". Relying on public torrent sites or standard repack distribution channels like FitGirl forces a frustrating, time-consuming compromise:
+                        </p>
+                        <p class="reasons-desc">
+                            <strong>The Torrent Bottleneck:</strong> You are completely at the mercy of peer seeds. <strong>The Decompression Tax:</strong> To save bandwidth, repacks use extreme compression algorithms. Your CPU pins to 100% usage, your entire PC lags, and you wait hours for installations to unpack.
+                        </p>
+                        <p class="reasons-desc">
+                            WONG Console entirely eliminates this loop. By operating directly on top of clean Steam files and utilizing the cloud-driven architecture of the Wong Repo, there are no multi-hour installations or CRC errors. You fetch clean files directly at maximum network speeds, apply the binary bypass instantly, and play immediately.
+                        </p>
+                    </div>
+
+                    <!-- Point 5: Launcher Bloat and DRM Chaos -->
+                    <div class="reasons-card reveal-item reveal-scale reveal-delay-2">
+                        <div class="reasons-num">5</div>
+                        <h3 class="reasons-title">Launcher Bloat &amp; DRM Chaos</h3>
+                        <p class="reasons-desc">
+                            Modern digital rights management (DRM) layers and third-party launchers (EA Play, Rockstar Social Club, Ubisoft Connect) have become incredibly invasive. They don't just protect copyright; they degrade gaming performance, introduce stuttering, and gatekeep games you've already paid for behind unstable servers.
+                        </p>
+                        <p class="reasons-desc">
+                            Managing cracks and emulation fixes from legendary creators manually is a nightmare. Drop the wrong .dll into a clean directory, and you break the build. WONG Console acts as a high-speed, automated manager for game bypasses, injecting clean fixes instantly without human error via a seamless programmatic toggle.
+                        </p>
+                    </div>
+
+                    <!-- Point 6: A Unified Power-User Hub -->
+                    <div class="reasons-card reveal-item reveal-scale reveal-delay-3">
+                        <div class="reasons-num">6</div>
+                        <h3 class="reasons-title">A Unified Power-User Hub</h3>
+                        <p class="reasons-desc">
+                            The PC gaming utility space has always been heavily segregated. If you wanted to manage your library structure, you used one tool. If you wanted to fix DRM issues, you used another. If you wanted to test or fix achievement unlocks, you had to download an entirely separate, aging Steam Achievement Manager (SAM).
+                        </p>
+                        <p class="reasons-desc">
+                            Juggling multiple independent, unoptimized executables felt sloppy. WONG Console represents total convergence: fusing an advanced manifest injector, a powerful DRM bypass installer, and a modern achievement modifier into a singular, cohesive desktop workspace.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <div class="section-container">
+                <div class="section-header reveal-item reveal-scale">
+                    <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+                    <p class="section-subtitle">Technical answers, security protocols, and operational guidelines for WongConsole.</p>
+                </div>
+
+                <div class="faq-grid">
+                    <!-- Q1 -->
+                    <div class="faq-card reveal-item reveal-scale reveal-delay-1">
+                        <div class="faq-question">
+                            <span class="faq-q-indicator">Q</span>
+                            <h3>How does the "Auto-Detect" feature find my Steam directory?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>When you click "Auto-Detect" in the settings, WongConsole briefly initiates a split-second execution of <code>steam.exe</code>. It hooks into the active process handle to pull the exact installation path directly from your system memory and Windows registry. This completely eliminates the need to manually hunt down and paste messy directory paths.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="faq-card reveal-item reveal-scale reveal-delay-2">
+                        <div class="faq-question">
+                            <span class="faq-q-indicator">Q</span>
+                            <h3>Why shouldn't I install WongConsole directly to a drive root like C:\ or D:\?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>WongConsole uses an incredibly aggressive file-synchronization engine to clean up repository updates and inject game bypasses flawlessly. If pointed at a bare drive root, a synchronization sweep could treat your entire drive partition as a temporary workspace and purge your files.</p>
+                            <div class="faq-note">
+                                <span class="note-label">NOTE:</span> While the latest builds feature a triple-layer safety stack (Auto-Subfolder nesting, Root Warning Dialogs, and a hardcoded <code>ExtractPackage</code> code block) that makes a drive wipe impossible, it is still standard practice to keep the utility isolated in its own dedicated directory.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="faq-card reveal-item reveal-scale reveal-delay-1">
+                        <div class="faq-question">
+                            <span class="faq-q-indicator">Q</span>
+                            <h3>Why don't I need to download .manifest or .lua files manually anymore?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Traditional steamtools force you to scrape SteamDB, generate configuration scripts, and manually arrange files. WongConsole relies on the Wong Repo—a private, cloud-hosted database of pre-verified ownership tickets and manifest signatures. The app handles the entire injection pipeline under the hood. You just select a game via the built-in SteamDB explorer or enter an AppID, click add, restart Steam, and the game is instantly populated.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="faq-card reveal-item reveal-scale reveal-delay-2">
+                        <div class="faq-question">
+                            <span class="faq-q-indicator">Q</span>
+                            <h3>How does WongConsole bypass the "FitGirl/Repack Grind"?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Traditional repacks achieve small download sizes through brutal compression. The catch is that your CPU must spend hours unpacking them, causing severe hardware lag, only for you to pray it doesn't throw a CRC error at 99%.</p>
+                            <p>WongConsole flips this model:</p>
+                            <ul class="faq-bullet-list">
+                                <li>You pull 100% clean, uncompressed digital game files at your maximum network speed.</li>
+                                <li>WongConsole acts as an automated binary manager, instantly hot-swapping official launcher files with elite, community-trusted crack files (like <code>voices38</code>) in a matter of seconds.</li>
+                            </ul>
+                            <p class="highlighted-result"><strong>Result:</strong> Zero decompression time, zero high-CPU strain, and immediate execution.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="faq-card reveal-item reveal-scale reveal-delay-1">
+                        <div class="faq-question">
+                            <span class="faq-q-indicator">Q</span>
+                            <h3>Can I use the built-in Steam Achievement Manager (SAM) safely?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes. The integrated SAM tool intercepts local Steam API callbacks dynamically while the client is running. While it allows you to toggle, unlock, or completely reset achievement metrics flawlessly via a clean GUI, it is highly recommended not to manipulate achievements while playing on official, anti-cheat protected servers (like VAC) to prevent any automated platform restrictions.</p>
+                            <p>Furthermore, the SAM feature is directly adopted from the open-source repository <a href="https://github.com/gibbed/SteamAchievementManager" target="_blank" class="faq-link">gibbed/SteamAchievementManager</a> who originally made it. You can check their codebase to understand the SAM feature mechanics in detail.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="faq-card reveal-item reveal-scale reveal-delay-2">
+                        <div class="faq-question">
+                            <span class="faq-q-indicator">Q</span>
+                            <h3>Why is Windows Defender / my Antivirus flagging WongConsole as a Trojan or HackTool?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>This is a guaranteed false positive. WongConsole requires high-level administrative file-system privileges to perform automated binary hot-swapping, inject custom .dll files, and bypass intrusive DRM layers (like Denuvo, EA, or Rockstar launchers).</p>
+                            <p>Because the app uses the exact same aggressive permission-override mechanisms that security scanners associate with untrusted payloads, it will be flagged. To use the tool, you must manually whitelist or add an exception to the WongConsole installation folder in your antivirus settings.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q7 -->
+                    <div class="faq-card reveal-item reveal-scale reveal-delay-1">
+                        <div class="faq-question">
+                            <span class="faq-q-indicator">Q</span>
+                            <h3>What data does WongConsole track? Is there spyware in this app?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely not. WongConsole collects zero personal identifiable information (PII), browser histories, or local credentials. The app connects to a private GitHub repository strictly to look at network traffic validation. It logs your connection handshake (IP request and hardware hash verification key) solely to confirm that you are a verified alpha/beta tester authorized to access the Wong Repo database.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q8 -->
+                    <div class="faq-card reveal-item reveal-scale reveal-delay-2">
+                        <div class="faq-question">
+                            <span class="faq-q-indicator">Q</span>
+                            <h3>Can I share WongConsole with my friends?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-alert-danger">
+                                <span class="danger-title">⚠️ CRITICAL WARNING:</span> No. Do not share this software binary under any circumstances.
+                            </div>
+                            <p>This project is currently operating in a strictly controlled, closed alpha/beta testing phase. Network traffic hitting the Wong Repo is continuously monitored for verification. If the system detects unverified users or leaked builds running the software, strict actions will be taken, resulting in the immediate and permanent revocation of your access key and repository privileges. If your key is blacklisted, your console will lose all automated bypassing and library integration features permanently.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q9 -->
+                    <div class="faq-card reveal-item reveal-scale reveal-delay-1">
+                        <div class="faq-question">
+                            <span class="faq-q-indicator">Q</span>
+                            <h3>Will using WongConsole get my main Steam account community banned or flagged?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>WongConsole operates entirely by manipulating your local file architecture, client configurations, and manifest structures on your machine. It does not exploit, injection-hack, or alter Valve's live cloud servers. Because of this, standard account bans for utilizing manifest-based library expansions are practically non-existent.</p>
+                            <p>However, to ensure absolute safety, never join official, anti-cheat secured servers (such as Valve Anti-Cheat / VAC) with modified binaries or while actively running the achievement modifier. If you want to be completely bulletproof, we always recommend running your initial testing configurations on an alternate or throwaway Steam profile.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q10 -->
+                    <div class="faq-card reveal-item reveal-scale reveal-delay-2">
+                        <div class="faq-question">
+                            <span class="faq-q-indicator">Q</span>
+                            <h3>Can I get banned from EA, Rockstar, or Ubisoft Connect for using the bypasses?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No. The bypass engine works by decoupling the game executable from those external corporate launchers entirely. When you launch a bypassed game through WongConsole, it uses emulated environment blocks to fool the game into thinking the launcher is active when it isn't. Because you aren't actually connecting to their official live servers, those external platforms have no way of tracking or banning your hardware or official accounts.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q11 -->
+                    <div class="faq-card reveal-item reveal-scale reveal-delay-1">
+                        <div class="faq-question">
+                            <span class="faq-q-indicator">Q</span>
+                            <h3>Does WongConsole support online multiplayer or matchmaking for bypassed titles?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Generally, no. Bypacking structural DRM layers (especially for the 80+ AAA titles supported) requires breaking connections to official corporate servers. Assume all bypassed games are strictly single-player experiences. Multiplayer functionality is restricted to local offline play, LAN play, or specific community-driven multiplayer cracks integrated directly into the specific bypass package.</p>
+                            <p><strong>Note:</strong> We will soon be adding an Online Feature in the app. However, even with the online feature active, you will only be able to play with other friends playing cracked copies, not legitimate buyers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q12 -->
+                    <div class="faq-card reveal-item reveal-scale reveal-delay-2">
+                        <div class="faq-question">
+                            <span class="faq-q-indicator">Q</span>
+                            <h3>Why did the app throw a "Critical Error: Cannot extract to root directory" warning and crash?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>This is our low-level system fail-safe engine (Layer 3 Protection) triggering to protect your PC. It means either user input or an environment pathing glitch attempted to point the file-extraction engine directly at a bare drive root (like C:\ or D:\).</p>
+                            <p>To prevent our hyper-aggressive synchronization scripts from wiping out your host partition files, the app immediately self-terminates before executing any write commands. To resolve this, simply ensure your installation target is pointed to a nested folder path (e.g., <code>D:\Games\WongApp\</code>).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get App Section -->
+        <section class="getapp-section" id="getapp">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Get <span class="gradient-text">App</span></h2>
+                    <p class="section-subtitle">Interested in WONG Console? Here's how to get involved.</p>
+                </div>
+
+                <div class="getapp-card reveal-item reveal-scale" id="getappCard">
+                    <div class="getapp-status-badge">
+                        <span class="status-dot-pulse"></span>
+                        <span>IN DEVELOPMENT</span>
+                    </div>
+
+                    <p class="getapp-message">
+                        This app is currently in development and even if released, it is highly anticipated to be launched as a SaaS (Software as a Service). Regardless, if you're interested to test this app's demo, you're most welcome to send me an email at:
+                    </p>
+
+                    <a href="mailto:technicallyprsent@gmail.com" class="getapp-email" id="getappEmail">
+                        <span class="email-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+                        technicallyprsent@gmail.com
+                    </a>
+
+                    <p class="getapp-track-note">
+                        For latest updates, keep tracking this website! Thank you.
+                    </p>
+
+                    <div class="getapp-divider"></div>
+
+                    <a href="tester.html" class="btn-tester" id="btnBecameTester">
+                        <span class="tester-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v2H9z"/><path d="M10 5v5.2L4.6 19.4A2 2 0 0 0 6.2 22h11.6a2 2 0 0 0 1.6-2.6L14 10.2V5"/><path d="M8.5 14h7"/></svg></span>
+                        I want to be a tester
+                        <span class="tester-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" id="mainFooter">
+        <div class="footer-container">
+            <div class="footer-logo-block">
+                <a href="#" class="logo">
+                    <span class="logo-accent">WONG</span>Console
+                </a>
+                <p class="footer-tagline">Elite Steam emulation layer. Designed in B.Tech AI &amp; Data Science matrices.</p>
+            </div>
+            
+            <div class="footer-links-block">
+                <div class="footer-links-col">
+                    <span class="footer-col-title">Documentation</span>
+                    <a href="#about" class="footer-link">Engine Specifications</a>
+                    <a href="#pipeline" class="footer-link">Deployment Pipeline</a>
+                    <a href="#faq" class="footer-link">FAQ</a>
+                    <a href="#story" class="footer-link">Reverse-Engineering Chronicles</a>
+                </div>
+                <div class="footer-links-col">
+                    <span class="footer-col-title">System Matrices</span>
+                    <span class="footer-text">Architect: Nabin Wong</span>
+                    <span class="footer-text">Compilation Environment: C# 8.0 (.NET)</span>
+                    <span class="footer-text">Storage Ledger: SQLite B-Tree Index</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 WONG Console. Engineered with absolute system-level autonomy and zero tracking wrappers.</p>
+            <p class="footer-bottom-credit">Reconstructed via Ghidra and dnSpy cleanups. All rights virtualized.</p>
+        </div>
+    </footer>
+
+    <!-- Custom Script Integration -->
+    <script src="index.js"></script>
+</body>
+</html>

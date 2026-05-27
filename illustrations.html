@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Demonstration videos showing how WONG Console works under the hood for library injection and game bypass operations.">
+    <title>Demonstrations &amp; Illustrations — WONG Console</title>
+
+    <!-- Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        /* Illustrations Page Specific Layout */
+        .illustrations-page {
+            min-height: 100vh;
+            padding: 120px 24px 80px 24px;
+            position: relative;
+        }
+
+        .tester-back-link {
+            position: fixed;
+            top: 28px;
+            left: 28px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-header);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: var(--border-glass);
+            border-radius: 8px;
+            background: rgba(7, 7, 9, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition-snappy);
+            z-index: 100;
+        }
+
+        .tester-back-link:hover {
+            color: var(--text-primary);
+            border-color: rgba(220, 20, 60, 0.35);
+            background: rgba(220, 20, 60, 0.06);
+        }
+
+        .tester-back-arrow {
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .tester-back-arrow svg {
+            stroke: currentColor;
+        }
+
+        .tester-back-link:hover .tester-back-arrow {
+            transform: translateX(-4px);
+        }
+
+        .tester-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-header);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--color-secondary);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            background: rgba(0, 229, 255, 0.07);
+            padding: 8px 20px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+        }
+
+        .illustrations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border: var(--border-glass);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow-glass);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: var(--transition-snappy);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #000;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-element {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+            display: block;
+            object-fit: contain;
+        }
+
+        .video-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .video-title {
+            font-family: var(--font-header);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .video-desc {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        /* Hover animations and color accents for video cards */
+        #videoCardAdd:hover {
+            border-color: rgba(0, 229, 255, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 229, 255, 0.08), var(--shadow-glass);
+        }
+
+        #videoCardBypass:hover {
+            border-color: rgba(220, 20, 60, 0.3);
+            box-shadow: 0 12px 40px rgba(220, 20, 60, 0.08), var(--shadow-glass);
+        }
+
+        /* Floating background elements */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--color-secondary);
+            top: -150px;
+            right: -150px;
+            animation: orbFloat 16s ease-in-out infinite alternate;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--color-primary);
+            bottom: -150px;
+            left: -150px;
+            animation: orbFloat 20s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes orbFloat {
+            from { transform: translate(0, 0); }
+            to { transform: translate(40px, -40px); }
+        }
+
+        @media (max-width: 1024px) {
+            .illustrations-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                max-width: 650px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tester-back-link {
+                top: 16px;
+                left: 16px;
+                font-size: 12px;
+                padding: 8px 14px;
+            }
+            .illustrations-page {
+                padding-top: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+    <!-- Ambient Cursor Glow & Dual-Ring Pointer -->
+    <div class="cursor-halo" id="cursorHalo"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Ambient Glow Backdrop -->
+    <div class="ambient-glow"></div>
+
+    <!-- Floating Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- Back to Home Link -->
+    <a href="index.html" class="tester-back-link" id="illustrationsBackLink">
+        <span class="tester-back-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span>
+        Back to Home
+    </a>
+
+    <!-- Main Content Area -->
+    <main class="illustrations-page" id="illustrationsPage">
+        <section class="section-container" style="padding: 0;">
+            <div class="section-header reveal-item reveal-scale">
+                <div class="tester-badge">
+                    <span>DEMO ILLUSTRATIONS</span>
+                </div>
+                <h1 class="section-title">Operational <span class="gradient-text">Demonstrations</span></h1>
+                <p class="section-subtitle">Real-time gameplay captures demonstrating direct-sector manifest installations and core DRM bypass injections.</p>
+            </div>
+
+            <div class="illustrations-grid">
+                <!-- Video Card 1: Adding a Game -->
+                <div class="video-card reveal-item reveal-scale reveal-delay-1" id="videoCardAdd">
+                    <div class="video-wrapper">
+                        <video class="video-element" controls preload="metadata" playsinline>
+                            <source src="Video/Adding Game.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Adding a Game Demonstration</h3>
+                        <p class="video-desc">
+                            Shows how WONG Console programmatically injects game manifest entries directly into the native Steam client database ledger. Watch the virtual manifest validation sequence match ownership sectors, and see the targeted game register instantly in the active Steam Library catalog upon restart without manual configuration file editing.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Video Card 2: Bypassing a Game -->
+                <div class="video-card reveal-item reveal-scale reveal-delay-2" id="videoCardBypass">
+                    <div class="video-wrapper">
+                        <video class="video-element" controls preload="metadata" playsinline>
+                            <source src="Video/Bypassing example.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Bypassing a Game Demonstration</h3>
+                        <p class="video-desc">
+                            Demonstrates the automated binary hot-swapping pipeline bypassing restrictive launcher layers and security modules. The process demonstrates the program sweeping target game directories, swapping standard executable shells with clean community emulators, and launching the target title autonomously with Steam client calls bypassed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Custom Script Integration -->
+    <script src="index.js"></script>
+</body>
+</html>

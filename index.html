@@ -64,7 +64,8 @@
                 <a href="#about" class="nav-link" id="navLinkAbout">About</a>
                 <a href="#features" class="nav-link" id="navLinkFeatures">Features</a>
                 <a href="#pipeline" class="nav-link" id="navLinkPipeline">Pipeline</a>
-                <a href="#faq" class="nav-link" id="navLinkFaq">FAQ</a>
+                <a href="faq.html" class="nav-link" id="navLinkFaq">FAQ</a>
+                <a href="illustrations.html" class="nav-link" id="navLinkIllustrations">Illustrations</a>
                 <a href="#story" class="nav-link" id="navLinkStory">The Story</a>
                 <a href="#getapp" class="nav-link active" id="navLinkGetApp">Get App</a>
             </nav>
@@ -88,7 +89,8 @@
             <a href="#about" class="mobile-nav-link" id="mobileLinkAbout">About</a>
             <a href="#features" class="mobile-nav-link" id="mobileLinkFeatures">Features</a>
             <a href="#pipeline" class="mobile-nav-link" id="mobileLinkPipeline">Pipeline</a>
-            <a href="#faq" class="mobile-nav-link" id="mobileLinkFaq">FAQ</a>
+            <a href="faq.html" class="mobile-nav-link" id="mobileLinkFaq">FAQ</a>
+            <a href="illustrations.html" class="mobile-nav-link" id="mobileLinkIllustrations">Illustrations</a>
             <a href="#story" class="mobile-nav-link" id="mobileLinkStory">The Story</a>
             <a href="#getapp" class="mobile-nav-link" id="mobileLinkGetApp">Get App</a>
             <a href="#terminal" class="mobile-nav-link" id="mobileLinkTerminal">Simulator Terminal</a>
@@ -507,167 +509,6 @@ SteamDirectory.InjectSector(manifest.Payload);</code></pre>
                         <p class="reasons-desc">
                             Juggling multiple independent, unoptimized executables felt sloppy. WONG Console represents total convergence: fusing an advanced manifest injector, a powerful DRM bypass installer, and a modern achievement modifier into a singular, cohesive desktop workspace.
                         </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="faq-section" id="faq">
-            <div class="section-container">
-                <div class="section-header reveal-item reveal-scale">
-                    <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
-                    <p class="section-subtitle">Technical answers, security protocols, and operational guidelines for WongConsole.</p>
-                </div>
-
-                <div class="faq-grid">
-                    <!-- Q1 -->
-                    <div class="faq-card reveal-item reveal-scale reveal-delay-1">
-                        <div class="faq-question">
-                            <span class="faq-q-indicator">Q</span>
-                            <h3>How does the "Auto-Detect" feature find my Steam directory?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>When you click "Auto-Detect" in the settings, WongConsole briefly initiates a split-second execution of <code>steam.exe</code>. It hooks into the active process handle to pull the exact installation path directly from your system memory and Windows registry. This completely eliminates the need to manually hunt down and paste messy directory paths.</p>
-                        </div>
-                    </div>
-
-                    <!-- Q2 -->
-                    <div class="faq-card reveal-item reveal-scale reveal-delay-2">
-                        <div class="faq-question">
-                            <span class="faq-q-indicator">Q</span>
-                            <h3>Why shouldn't I install WongConsole directly to a drive root like C:\ or D:\?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>WongConsole uses an incredibly aggressive file-synchronization engine to clean up repository updates and inject game bypasses flawlessly. If pointed at a bare drive root, a synchronization sweep could treat your entire drive partition as a temporary workspace and purge your files.</p>
-                            <div class="faq-note">
-                                <span class="note-label">NOTE:</span> While the latest builds feature a triple-layer safety stack (Auto-Subfolder nesting, Root Warning Dialogs, and a hardcoded <code>ExtractPackage</code> code block) that makes a drive wipe impossible, it is still standard practice to keep the utility isolated in its own dedicated directory.
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Q3 -->
-                    <div class="faq-card reveal-item reveal-scale reveal-delay-1">
-                        <div class="faq-question">
-                            <span class="faq-q-indicator">Q</span>
-                            <h3>Why don't I need to download .manifest or .lua files manually anymore?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Traditional steamtools force you to scrape SteamDB, generate configuration scripts, and manually arrange files. WongConsole relies on the Wong Repo—a private, cloud-hosted database of pre-verified ownership tickets and manifest signatures. The app handles the entire injection pipeline under the hood. You just select a game via the built-in SteamDB explorer or enter an AppID, click add, restart Steam, and the game is instantly populated.</p>
-                        </div>
-                    </div>
-
-                    <!-- Q4 -->
-                    <div class="faq-card reveal-item reveal-scale reveal-delay-2">
-                        <div class="faq-question">
-                            <span class="faq-q-indicator">Q</span>
-                            <h3>How does WongConsole bypass the "FitGirl/Repack Grind"?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Traditional repacks achieve small download sizes through brutal compression. The catch is that your CPU must spend hours unpacking them, causing severe hardware lag, only for you to pray it doesn't throw a CRC error at 99%.</p>
-                            <p>WongConsole flips this model:</p>
-                            <ul class="faq-bullet-list">
-                                <li>You pull 100% clean, uncompressed digital game files at your maximum network speed.</li>
-                                <li>WongConsole acts as an automated binary manager, instantly hot-swapping official launcher files with elite, community-trusted crack files (like <code>voices38</code>) in a matter of seconds.</li>
-                            </ul>
-                            <p class="highlighted-result"><strong>Result:</strong> Zero decompression time, zero high-CPU strain, and immediate execution.</p>
-                        </div>
-                    </div>
-
-                    <!-- Q5 -->
-                    <div class="faq-card reveal-item reveal-scale reveal-delay-1">
-                        <div class="faq-question">
-                            <span class="faq-q-indicator">Q</span>
-                            <h3>Can I use the built-in Steam Achievement Manager (SAM) safely?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Yes. The integrated SAM tool intercepts local Steam API callbacks dynamically while the client is running. While it allows you to toggle, unlock, or completely reset achievement metrics flawlessly via a clean GUI, it is highly recommended not to manipulate achievements while playing on official, anti-cheat protected servers (like VAC) to prevent any automated platform restrictions.</p>
-                            <p>Furthermore, the SAM feature is directly adopted from the open-source repository <a href="https://github.com/gibbed/SteamAchievementManager" target="_blank" class="faq-link">gibbed/SteamAchievementManager</a> who originally made it. You can check their codebase to understand the SAM feature mechanics in detail.</p>
-                        </div>
-                    </div>
-
-                    <!-- Q6 -->
-                    <div class="faq-card reveal-item reveal-scale reveal-delay-2">
-                        <div class="faq-question">
-                            <span class="faq-q-indicator">Q</span>
-                            <h3>Why is Windows Defender / my Antivirus flagging WongConsole as a Trojan or HackTool?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>This is a guaranteed false positive. WongConsole requires high-level administrative file-system privileges to perform automated binary hot-swapping, inject custom .dll files, and bypass intrusive DRM layers (like Denuvo, EA, or Rockstar launchers).</p>
-                            <p>Because the app uses the exact same aggressive permission-override mechanisms that security scanners associate with untrusted payloads, it will be flagged. To use the tool, you must manually whitelist or add an exception to the WongConsole installation folder in your antivirus settings.</p>
-                        </div>
-                    </div>
-
-                    <!-- Q7 -->
-                    <div class="faq-card reveal-item reveal-scale reveal-delay-1">
-                        <div class="faq-question">
-                            <span class="faq-q-indicator">Q</span>
-                            <h3>What data does WongConsole track? Is there spyware in this app?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Absolutely not. WongConsole collects zero personal identifiable information (PII), browser histories, or local credentials. The app connects to a private GitHub repository strictly to look at network traffic validation. It logs your connection handshake (IP request and hardware hash verification key) solely to confirm that you are a verified alpha/beta tester authorized to access the Wong Repo database.</p>
-                        </div>
-                    </div>
-
-                    <!-- Q8 -->
-                    <div class="faq-card reveal-item reveal-scale reveal-delay-2">
-                        <div class="faq-question">
-                            <span class="faq-q-indicator">Q</span>
-                            <h3>Can I share WongConsole with my friends?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-alert-danger">
-                                <span class="danger-title">⚠️ CRITICAL WARNING:</span> No. Do not share this software binary under any circumstances.
-                            </div>
-                            <p>This project is currently operating in a strictly controlled, closed alpha/beta testing phase. Network traffic hitting the Wong Repo is continuously monitored for verification. If the system detects unverified users or leaked builds running the software, strict actions will be taken, resulting in the immediate and permanent revocation of your access key and repository privileges. If your key is blacklisted, your console will lose all automated bypassing and library integration features permanently.</p>
-                        </div>
-                    </div>
-
-                    <!-- Q9 -->
-                    <div class="faq-card reveal-item reveal-scale reveal-delay-1">
-                        <div class="faq-question">
-                            <span class="faq-q-indicator">Q</span>
-                            <h3>Will using WongConsole get my main Steam account community banned or flagged?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>WongConsole operates entirely by manipulating your local file architecture, client configurations, and manifest structures on your machine. It does not exploit, injection-hack, or alter Valve's live cloud servers. Because of this, standard account bans for utilizing manifest-based library expansions are practically non-existent.</p>
-                            <p>However, to ensure absolute safety, never join official, anti-cheat secured servers (such as Valve Anti-Cheat / VAC) with modified binaries or while actively running the achievement modifier. If you want to be completely bulletproof, we always recommend running your initial testing configurations on an alternate or throwaway Steam profile.</p>
-                        </div>
-                    </div>
-
-                    <!-- Q10 -->
-                    <div class="faq-card reveal-item reveal-scale reveal-delay-2">
-                        <div class="faq-question">
-                            <span class="faq-q-indicator">Q</span>
-                            <h3>Can I get banned from EA, Rockstar, or Ubisoft Connect for using the bypasses?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>No. The bypass engine works by decoupling the game executable from those external corporate launchers entirely. When you launch a bypassed game through WongConsole, it uses emulated environment blocks to fool the game into thinking the launcher is active when it isn't. Because you aren't actually connecting to their official live servers, those external platforms have no way of tracking or banning your hardware or official accounts.</p>
-                        </div>
-                    </div>
-
-                    <!-- Q11 -->
-                    <div class="faq-card reveal-item reveal-scale reveal-delay-1">
-                        <div class="faq-question">
-                            <span class="faq-q-indicator">Q</span>
-                            <h3>Does WongConsole support online multiplayer or matchmaking for bypassed titles?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Generally, no. Bypacking structural DRM layers (especially for the 80+ AAA titles supported) requires breaking connections to official corporate servers. Assume all bypassed games are strictly single-player experiences. Multiplayer functionality is restricted to local offline play, LAN play, or specific community-driven multiplayer cracks integrated directly into the specific bypass package.</p>
-                            <p><strong>Note:</strong> We will soon be adding an Online Feature in the app. However, even with the online feature active, you will only be able to play with other friends playing cracked copies, not legitimate buyers.</p>
-                        </div>
-                    </div>
-
-                    <!-- Q12 -->
-                    <div class="faq-card reveal-item reveal-scale reveal-delay-2">
-                        <div class="faq-question">
-                            <span class="faq-q-indicator">Q</span>
-                            <h3>Why did the app throw a "Critical Error: Cannot extract to root directory" warning and crash?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>This is our low-level system fail-safe engine (Layer 3 Protection) triggering to protect your PC. It means either user input or an environment pathing glitch attempted to point the file-extraction engine directly at a bare drive root (like C:\ or D:\).</p>
-                            <p>To prevent our hyper-aggressive synchronization scripts from wiping out your host partition files, the app immediately self-terminates before executing any write commands. To resolve this, simply ensure your installation target is pointed to a nested folder path (e.g., <code>D:\Games\WongApp\</code>).</p>
-                        </div>
                     </div>
                 </div>
             </div>
